@@ -1,0 +1,149 @@
+:root {
+    --bg-dark: #1e1e1e;
+    --bg-card: #2d2d2d;
+    --bg-sidebar: #252526;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --accent-color: #007acc; /* Azul estilo VS Code */
+    --accent-hover: #005f9e;
+    --danger: #d9534f;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow: hidden; /* Evita scroll na página toda, apenas no quadro */
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #333;
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; }
+
+/* MAIN CONTENT */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* O QUADRO (BOARD) */
+.board-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Scroll horizontal para as colunas */
+    height: 100%;
+    padding-bottom: 20px;
+    align-items: flex-start; /* Colunas alinhadas ao topo */
+}
+
+/* COLUNAS (Geradas via JS) */
+.coluna {
+    min-width: 300px;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%; /* Respeita altura da tela */
+}
+
+.coluna-header {
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-delete-col { background: none; border: none; color: #666; cursor: pointer; }
+.btn-delete-col:hover { color: var(--danger); }
+
+/* CARDS DE TAREFA */
+.lista-tarefas {
+    flex: 1;
+    overflow-y: auto; /* Scroll vertical dentro da coluna se tiver muitas tarefas */
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    background-color: #3e3e42;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: grab;
+    border-left: 3px solid var(--accent-color);
+}
+
+.card:hover { background-color: #454549; }
+
+/* BOTÕES GERAIS */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+}
+.btn-primary:hover { background-color: var(--accent-hover); }
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #666;
+    color: #ccc;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-add-tarefa {
+    background: transparent;
+    border: 2px dashed #444;
+    color: #888;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-add-tarefa:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+/* MODAL / POPUP */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+.hidden { display: none; }
+
+.modal-box {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    display: flex; flex-direction: column; gap: 15px;
+}
+#modal-input {
+    padding: 10px; border-radius: 4px; border: 1px solid #555;
+    background: #222; color: white;
+}
+.modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
