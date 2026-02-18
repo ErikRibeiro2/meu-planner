@@ -135,3 +135,16 @@ body {
 }
 #modal-input { padding: 10px; background: #222; color: white; border: 1px solid #555; }
 .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+/* Quando estiver arrastando um card */
+.card-dragging {
+    opacity: 0.5;
+    border: 2px dashed var(--accent-color);
+    transform: scale(0.95);
+}
+
+/* Quando passar um card por cima de uma coluna (Drop Zone) */
+.coluna-highlight {
+    background-color: #383838; /* Um pouco mais claro que o normal */
+    border: 2px dashed #666;
+}
